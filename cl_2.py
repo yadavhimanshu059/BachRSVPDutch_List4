@@ -52,6 +52,8 @@ for item1 in element:
     item1=item1.split("\n")
     for item in item1:
         item=item.split("\t\t\t")
+        item[5]=item[5].split(" ")
+        item.append(len(item[5]))
         temp2.append(item)
     temp1.append(temp2[0])
 alllists=temp1
@@ -66,7 +68,7 @@ for k in range(max(number_of_conditions)):
             temp.append(item)
     alllistsn.append(temp)
 
-#print(str(alllistsn)+"\n\n\n\n\n")
+print(str(alllistsn)+"\n\n\n\n\n")
     
 
 ##alllistsn = []
@@ -93,6 +95,8 @@ if(number_of_fillers!= 0):
             filler =allfillers[j]
             count=count+1
             fillitem=filler.split("\t\t\t")
+            fillitem[5]=fillitem[5].split(" ")
+            fillitem.append(len(fillitem[5]))
             alist.append(fillitem)
             all_fillers.append(fillitem)
 print(alllistsn)
@@ -106,6 +110,8 @@ if(number_of_pracitem!= 0):
     for i in range(number_of_pracitem):
         count+=1
         pracitem=allprac[i].split("\t\t\t")
+        pracitem[5]=pracitem[5].split(" ")
+        pracitem.append(len(pracitem[5]))
         all_prac.append(pracitem)
 
 
