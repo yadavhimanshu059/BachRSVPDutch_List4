@@ -153,6 +153,8 @@
         timeline.push(fixation);
 
         var temp_prac = plist[j][5];
+        var sent_prac = temp_prac.replace(/,/, ' ');
+        sent_prac = sent_prac.replace(/_/, ' ');
         var num_pwords = plist[j][11];
         for(var k=0;k<num_pwords;k++){
           var newstr = temp_prac[k];
@@ -216,11 +218,9 @@
           post_trial_gap: 500
         }
         
-        var prac_sent = temp_prac.replace(/,/,' ');
-        var prac_sent = prac_sent.replace(/_/,' ');
         var feedback_correct = {
           type: "html-button-response",
-          stimulus: "<p>" + 'De zin: '+ prac_sent + '<br> <br> <br>' + 'Welche der vier Aussagen ist richtig? <br> <br> ' + shuffled_prac_alter[0] + '<br>' +shuffled_prac_alter[1] + '<br>'+shuffled_prac_alter[2] + '<br>'+shuffled_prac_alter[3] + '<br> <br> <br>'+ 'Het juiste antwoord is: '+prac_right+ "</p>",
+          stimulus: "<p>" + 'De zin: '+ sent_prac + '<br> <br> <br>' + 'Welche der vier Aussagen ist richtig? <br> <br> ' + shuffled_prac_alter[0] + '<br>' +shuffled_prac_alter[1] + '<br>'+shuffled_prac_alter[2] + '<br>'+shuffled_prac_alter[3] + '<br> <br> <br>'+ 'Het juiste antwoord is: '+prac_right+ "</p>",
           choices: ['Verder'],
           post_trial_gap: 500
         }
