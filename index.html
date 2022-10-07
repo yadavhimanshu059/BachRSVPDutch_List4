@@ -12,6 +12,7 @@
     <script src= "jspsych-6/plugins/jspsych-html-keyboard-response-ld.js"></script>
     <script src= "jspsych-6/plugins/jspsych-survey-text.js"></script>
     <script src= "jspsych-6/plugins/jspsych-survey-multi-choice.js"></script>
+    <script src="jspsych-6/plugins/jspsych-survey-multi-select.js"></script>
     <script src= "jspsych-6/plugins/jspsych-html-slider-response.js"></script>
     <script src="jspsych-6/download.js"></script>
     <script src="specs_lexical_decision.js"></script>
@@ -161,7 +162,6 @@
               type: "html-keyboard-response",
               stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + newstr + '</p>',
               choices: [" ","Spacebar"],
-              trial_duration: 3000,
               data : {stimulus: newstr, roi: k+1, correct_choice: 0, Particpant_id:participant_id, Entry_Number: entry_number,  Experiment_ID: plist[j][2], Item_ID : plist[j][0], Condition_ID : plist[j][1], List_ID : plist[j][4]}
           }
           timeline.push(trial_p3_1);
@@ -263,7 +263,6 @@
                   type: "html-keyboard-response",
                   stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + newstr + '</p>',
                   choices: [" ","Spacebar"],
-                  trial_duration: 3000,
                   data : {stimulus: newstr, roi: k+1, correct_choice: 0, Particpant_id:participant_id, Entry_Number: entry_number,  Experiment_ID: list[j][2], Item_ID : list[j][0], Condition_ID : list[j][1], List_ID : ln}
               }
               timeline.push(trial_3_1);
@@ -335,14 +334,24 @@
       var demo2 = {
         type: 'survey-multi-choice',
         questions: [
-          {prompt: "Wat is uw hoogste opleidingsniveau?", name: 'education', options: ["Middelbare school/MBO", "Bachelor/HBO", "Master", "Gepromoveerd","Anders"], required: true},
-          {prompt: "Welke talen spreek je behalve Nederlands?", name: 'dutch', options: ["Duits","Engels","Frans"], required: true}
+          {prompt: "Wat is uw hoogste opleidingsniveau?", name: 'education', options: ["Middelbare school/MBO", "Bachelor/HBO", "Master", "Gepromoveerd","Anders"], required: true}
         ],
         required: true,
         button_label: 'Verder',
         post_trial_gap: 500
       };
       timeline.push(demo2);
+
+      var demo3 = {
+        type: 'survey-multi-select',
+        questions: [
+          {prompt: "Welke talen spreek je behalve Nederlands?", options: ["Duits","Engels","Frans"], horizontal: true, required: true, name: 'dutch'}
+        ],
+        required: true,
+        button_label: 'Verder',
+        post_trial_gap: 500
+      };
+      timeline.push(demo3);
 
       var endmain = {
         type: "html-keyboard-response",
