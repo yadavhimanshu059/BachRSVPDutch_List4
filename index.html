@@ -169,7 +169,7 @@
 
         var trial_p3_2 = {
             type: 'html-slider-response',
-            stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + "How would you rate this sentence?" + '<br> <br> <br>' + '</p>',
+            stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + "Hoe zou u deze zin beoordelen in termen van begripsmoeilijkheden?" + '<br> <br> <br>' + '</p>',
             require_movement: true,
             labels: ['heel makkelijk', 'vrij makkelijk', '.','vrij moeilijk','heel moeilijk'],
             button_label: 'Verder',
@@ -215,11 +215,13 @@
           choices: ['Verder'],
           post_trial_gap: 500
         }
-        
-        var prac_sent = temp_prac.replaceAll(",", ' ');
+
+        var prac_sent = temp_prac.toString();
+        prac_sent = prac_sent.replaceAll(",", ' ');
+        prac_sent = prac_sent.replace(/_/, ' ');
         var feedback_correct = {
           type: "html-button-response",
-          stimulus: "<p>" + 'De zin: '+ prac_sent + '<br> <br> <br>' + 'Welche der vier Aussagen ist richtig? <br> <br> ' + shuffled_prac_alter[0] + '<br>' +shuffled_prac_alter[1] + '<br>'+shuffled_prac_alter[2] + '<br>'+shuffled_prac_alter[3] + '<br> <br> <br>'+ 'Het juiste antwoord is: '+prac_right+ "</p>",
+          stimulus: "<p>" + 'De zin: '+ prac_sent + '<br> <br> <br>' + 'Welke van de vier uitspraken is juist? <br> <br> ' + shuffled_prac_alter[0] + '<br>' +shuffled_prac_alter[1] + '<br>'+shuffled_prac_alter[2] + '<br>'+shuffled_prac_alter[3] + '<br> <br> <br>'+ 'Het juiste antwoord is: '+prac_right+ "</p>",
           choices: ['Verder'],
           post_trial_gap: 500
         }
@@ -269,7 +271,7 @@
 
             var trial_3_2 = {
                 type: 'html-slider-response',
-                stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + "How would you rate the sentence?" + '<br> <br> <br>' + '</p>',
+                stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + "Hoe zou u deze zin beoordelen in termen van begripsmoeilijkheden?" + '<br> <br> <br>' + '</p>',
                 require_movement: true,
                 labels: ['heel makkelijk', 'vrij makkelijk', '.','vrij moeilijk','heel moeilijk'],
                 button_label: 'Verder',
@@ -294,7 +296,7 @@
             }
             var question_trial = {
                 type: "html-button-response",
-                stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + 'Welche der vier Aussagen ist richtig? <br>' + '</p>',
+                stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + 'Welke van de vier uitspraken is juist? <br>' + '</p>',
                 choices: shuffled_alternatives,
                 margin_vertical: '15px',
                 margin_horizontal: '300px',
