@@ -158,10 +158,15 @@
         for(var k=0;k<num_pwords;k++){
           var newstr = temp_prac[k];
           newstr = newstr.replace(/_/,' ');
+          var screentime = 500;
+          var blanktime = 50;
+          var timeout = screentime + blanktime;
           var trial_p3_1 = {
               type: "html-keyboard-response",
               stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + newstr + '</p>',
-              choices: [" ","Spacebar"],
+              choices: "NO_KEYS",
+              stimulus_duration: screentime,
+              trial_duration: timeout,
               data : {stimulus: newstr, roi: k+1, correct_choice: 0, Particpant_id:participant_id, Entry_Number: entry_number,  Experiment_ID: plist[j][2], Item_ID : plist[j][0], Condition_ID : plist[j][1], List_ID : plist[j][4]}
           }
           timeline.push(trial_p3_1);
@@ -259,10 +264,15 @@
             for(var k=0;k<num_words;k++){
               var newstr = templist[k];
               newstr = newstr.replace(/_/,' ');
+              var screentime = 500;
+              var blanktime = 50;
+              var timeout = screentime + blanktime;
               var trial_3_1 = {
                   type: "html-keyboard-response",
                   stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + newstr + '</p>',
-                  choices: [" ","Spacebar"],
+                  choices: "NO_KEYS",
+                  stimulus_duration: screentime,
+                  trial_duration: timeout,
                   data : {stimulus: newstr, roi: k+1, correct_choice: 0, Particpant_id:participant_id, Entry_Number: entry_number,  Experiment_ID: list[j][2], Item_ID : list[j][0], Condition_ID : list[j][1], List_ID : ln}
               }
               timeline.push(trial_3_1);
