@@ -43,32 +43,65 @@ f3.write("var list_number = 0" +  ";\n")
 f3.write("var font_size = " + str(int(ar[i+4])) + ";\n")
 f3.write("var color = " + ar[i+5][:-1] + ";\n")
 f3.close()
-alllists=[]
-with open("lists.txt", "r",encoding='utf8') as input:
-    temp1=[]
-    element=input.read().split("\n\n")
-for item1 in element:
-    temp2=[]
-    item1=item1.split("\n")
-    for item in item1:
-        item=item.split("\t\t\t")
-        item[5]=item[5].split(" ")
-        item.append(len(item[5]))
-        temp2.append(item)
-    temp1.append(temp2[0])
-alllists=temp1
 
-print(str(alllists)+"\n\n")
+alllists_nl=[]
+alllists_de=[]
+with open("lists_nl.txt", "r",encoding='utf8') as input:
+    element_nl=input.read().split("\n\n")
 
-alllistsn = []
+with open("lists_de.txt", "r",encoding='utf8') as input:
+    element_de=input.read().split("\n\n")
+
+temp1_de=[]
+temp1_nl=[]
+
+for (stimuli_de,stimuli_nl) in zip(element_de,element_nl):
+    stimuli_de=stimuli_de.split("\n")
+    stimuli_nl=stimuli_nl.split("\n")
+    temp2_de=[]
+    temp2_nl=[]
+    for (item_de,item_nl) in zip(stimuli_de,stimuli_nl):
+        item_de=item_de.split("\t\t\t")
+        item_nl=item_nl.split("\t\t\t")
+        item_de[5]=item_de[5].split(" ")
+        item_nl[5]=item_nl[5].split(" ")
+        item_de.append(len(item_de[5]))
+        item_nl.append(len(item_nl[5]))
+        screentime = []
+        for (word_de,word_nl) in zip(item_de[5],item_nl[5]):
+            time_de = 190 + (len(word_de)*(20))
+            time_nl = 190 + (len(word_nl)*(20))
+            screentime.append(max([time_de,time_nl]))
+        item_de.append(screentime)
+        item_nl.append(screentime)
+        temp2_de.append(item_de)
+        temp2_nl.append(item_nl)
+    temp1_de.append(temp2_de[0])
+    temp1_nl.append(temp2_nl[0])
+
+alllists_de=temp1_de
+alllists_nl=temp1_nl
+
+print(str(alllists_de)+"\n\n")
+print(str(alllists_nl)+"\n\n")
+
+alllistsn_de = []
 for k in range(max(number_of_conditions)):
     temp=[]
-    for item in alllists:
+    for item in alllists_de:
         if str(item[4])==str(k+1):
             temp.append(item)
-    alllistsn.append(temp)
+    alllistsn_de.append(temp)
 
-print(str(alllistsn)+"\n\n\n\n\n")
+alllistsn_nl = []
+for k in range(max(number_of_conditions)):
+    temp=[]
+    for item in alllists_nl:
+        if str(item[4])==str(k+1):
+            temp.append(item)
+    alllistsn_nl.append(temp)
+
+print(str(alllistsn_de)+"\n\n\n\n\n")
     
 
 ##alllistsn = []
@@ -86,40 +119,88 @@ print(str(alllistsn)+"\n\n\n\n\n")
 ##print(alllistsn)
 
 if(number_of_fillers!= 0):
-    with open("fillers.txt", "r",encoding='utf8') as input:
-        allfillers = input.read().split("\n\n")
-    all_fillers=[]
-    for alist in alllistsn:
+    with open("fillers_de.txt", "r",encoding='utf8') as input:
+        allfillers_de = input.read().split("\n\n")
+    with open("fillers_nl.txt", "r",encoding='utf8') as input:
+        allfillers_nl = input.read().split("\n\n")
+
+    all_fillers_de=[]
+    all_fillers_nl=[]
+    for (alist_de,alist_nl) in zip(alllistsn_de,alllistsn_nl):
         count=0
         for j in range(number_of_fillers):
-            filler =allfillers[j]
+            filler_de =allfillers_de[j]
+            filler_nl =allfillers_nl[j]
             count=count+1
-            fillitem=filler.split("\t\t\t")
-            fillitem[5]=fillitem[5].split(" ")
-            fillitem.append(len(fillitem[5]))
-            alist.append(fillitem)
-            all_fillers.append(fillitem)
-print(alllistsn)
+            fillitem_de=filler_de.split("\t\t\t")
+            fillitem_nl=filler_nl.split("\t\t\t")
+            fillitem_de[5]=fillitem_de[5].split(" ")
+            fillitem_nl[5]=fillitem_nl[5].split(" ")
+            fillitem_de.append(len(fillitem_de[5]))
+            fillitem_nl.append(len(fillitem_nl[5]))
 
-print(len(alllistsn[2]))
+            screentime = []
+            for (word_de,word_nl) in zip(fillitem_de[5],fillitem_nl[5]):
+                time_de = 190 + (len(word_de)*(20))
+                time_nl = 190 + (len(word_nl)*(20))
+                screentime.append(max([time_de,time_nl]))
+            fillitem_de.append(screentime)
+            fillitem_nl.append(screentime)
+            
+            alist_de.append(fillitem_de)
+            alist_nl.append(fillitem_nl)
+            all_fillers_de.append(fillitem_de)
+            all_fillers_nl.append(fillitem_nl)
+print(alllistsn_de)
+
+print(len(alllistsn_de[2]))
+
 if(number_of_pracitem!= 0):
-    with open("practice.txt", "r",encoding='utf8') as input:
-        allprac = input.read().split("\n\n")
-    all_prac=[]
+    with open("practice_de.txt", "r",encoding='utf8') as input:
+        allprac_de = input.read().split("\n\n")
+    with open("practice_nl.txt", "r",encoding='utf8') as input:
+        allprac_nl = input.read().split("\n\n")
+
+    all_prac_de=[]
+    all_prac_nl=[]
     count=0
     for i in range(number_of_pracitem):
         count+=1
-        pracitem=allprac[i].split("\t\t\t")
-        pracitem[5]=pracitem[5].split(" ")
-        pracitem.append(len(pracitem[5]))
-        all_prac.append(pracitem)
+        pracitem_de=allprac_de[i].split("\t\t\t")
+        pracitem_nl=allprac_nl[i].split("\t\t\t")
+        pracitem_de[5]=pracitem_de[5].split(" ")
+        pracitem_nl[5]=pracitem_nl[5].split(" ")
+        pracitem_de.append(len(pracitem_de[5]))
+        pracitem_nl.append(len(pracitem_nl[5]))
+        screentime = []
+        for (word_de,word_nl) in zip(pracitem_de[5],pracitem_nl[5]):
+            time_de = 190 + (len(word_de)*(20))
+            time_nl = 190 + (len(word_nl)*(20))
+            screentime.append(max([time_de,time_nl]))
+        pracitem_de.append(screentime)
+        pracitem_nl.append(screentime)
+        
+        all_prac_de.append(pracitem_de)
+        all_prac_nl.append(pracitem_nl)
 
 
-f4 = open("lists_lexical_decision.js","w",encoding="utf-8")
+f4 = open("lists_RSVP_German.js","w",encoding="utf-8")
 f4.write("var lists =")
-f4.write(str(alllistsn))
+f4.write(str(alllistsn_de))
 f4.write(";\n")
 f4.write("var praclist =")
-f4.write(str(all_prac))
+f4.write(str(all_prac_de))
 f4.write(";\n")
 f4.close()
+
+f5 = open("lists_RSVP_Dutch.js","w",encoding="utf-8")
+f5.write("var lists =")
+f5.write(str(alllistsn_nl))
+f5.write(";\n")
+f5.write("var praclist =")
+f5.write(str(all_prac_nl))
+f5.write(";\n")
+f5.close()
+
+
+#### Copy items from google list to list_de and list_nl; control spacing etc. accordingly; also fillers and prac

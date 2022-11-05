@@ -16,7 +16,7 @@
     <script src= "jspsych-6/plugins/jspsych-html-slider-response.js"></script>
     <script src="jspsych-6/download.js"></script>
     <script src="specs_lexical_decision.js"></script>
-    <script src="lists_lexical_decision.js"></script>
+    <script src="lists_RSVP_Dutch.js"></script>
     <script src="lists_prestudy.js"></script>
 
     <!--<script src="download.js"></script>-->
@@ -260,11 +260,12 @@
             timeline.push(fixation);
 
             var templist = list[j][5];
+            var timelist = list[j][12];
             var num_words = list[j][11];
             for(var k=0;k<num_words;k++){
               var newstr = templist[k];
               newstr = newstr.replace(/_/,' ');
-              var screentime = 800;
+              var screentime = timelist[k];
               var blanktime = 200;
               var timeout = screentime + blanktime;
               var trial_3_1 = {
