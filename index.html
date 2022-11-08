@@ -83,7 +83,7 @@
 
     var instructions3 = {
       type: "html-button-response",
-      stimulus: "<p> Eerst ziet op het scherm een kruis dat de plaats aangeeft waar de zin zal verschijnen. Wanneer u op de spatiebalk drukt, verschijnt het eerste woord. Daarna verschijnt vanzelf de rest van de zin, woord voor woord, of soms met twee woorden tegelijk. U ziet dus niet de hele zin in één keer. Het is niet mogelijk om terug te lezen dus let goed op en zorg ervoor dat u de betekenis van de zin begrijpt. Nadat u de zin hebt gelezen, wordt u gevraagd of de zin gemakkelijk te begrijpen is of niet. U geeft uw antwoord met behulp van de schuifbalk die op het scherm wordt weergegeven. Als de zin zeer gemakkelijk te begrijpen is, schuif de knop dan naar “heel makkelijk”, als de zin zeer moeilijk te begrijpen is, schuif de knop dan naar “heel moeilijk”. Als de zin vrij gemakkelijk is, maar niet erg gemakkelijk, zet u de schuifregelaar in de richting van “vrij makkelijk”. </p>",
+      stimulus: "<p> Eerst ziet op het scherm een kruis dat de plaats aangeeft waar de zin zal verschijnen. Wanneer u op de knop “Start” drukt, verschijnt het eerste woord. Daarna verschijnt vanzelf de rest van de zin, woord voor woord, of soms met twee woorden tegelijk. U ziet dus niet de hele zin in één keer. Het is niet mogelijk om terug te lezen dus let goed op en zorg ervoor dat u de betekenis van de zin begrijpt. Nadat u de zin hebt gelezen, wordt u gevraagd of de zin gemakkelijk te begrijpen is of niet. U geeft uw antwoord met behulp van de schuifbalk die op het scherm wordt weergegeven. Als de zin zeer gemakkelijk te begrijpen is, schuif de knop dan naar “heel makkelijk”, als de zin zeer moeilijk te begrijpen is, schuif de knop dan naar “heel moeilijk”. Als de zin vrij gemakkelijk is, maar niet erg gemakkelijk, zet u de schuifregelaar in de richting van “vrij makkelijk”. </p>",
       choices: ['Verder'],
 
       post_trial_gap: 500
@@ -110,7 +110,7 @@
     var fixation = {
       type: "html-button-response",
       stimulus: '<div style="font-size:60px;"> <br> <br> <br> + <br> <br> <br> </div>',
-      choices: ['Verder'],
+      choices: ['Start'],
       post_trial_gap: 400,
       data : {stimulus: "fixation", roi: 0, correct_choice: 0, Particpant_id:participant_id, Entry_Number: entry_number,  Experiment_ID: '0', Item_ID : '0', Condition_ID : 'N', List_ID : '0'}
     }
@@ -158,7 +158,7 @@
 
     var plist=shuffle(praclist,choiceofe)
     for(j=0;j<(number_of_pracitem);j++){
-        timeline.push(fixation_practice);
+        timeline.push(fixation);
 
         var temp_prac = plist[j][5];
         var prac_timelist = plist[j][12];
@@ -364,7 +364,7 @@
       var demo3 = {
         type: 'survey-multi-select',
         questions: [
-          {prompt: "Welke talen spreekt u vloeiend behalve Nederlands?", options: ["Duits","Fries","Engels","Frans","Anders"], horizontal: true, required: true, name: 'dutch'}
+          {prompt: "Welke talen spreekt u vloeiend behalve Nederlands?", options: ["Duits","Fries","Engels","Frans","Andere"], horizontal: true, required: true, name: 'dutch'}
         ],
         required: true,
         button_label: 'Verder',
