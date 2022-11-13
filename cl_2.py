@@ -44,6 +44,11 @@ f3.write("var font_size = " + str(int(ar[i+4])) + ";\n")
 f3.write("var color = " + ar[i+5][:-1] + ";\n")
 f3.close()
 
+#count_chunks = 0
+#total_time = 0
+#count_chunks_fillers = 0
+#total_time_fillers = 0
+
 alllists_nl=[]
 alllists_de=[]
 with open("lists_nl.txt", "r",encoding='utf8') as input:
@@ -202,5 +207,9 @@ f5.write(str(all_prac_nl))
 f5.write(";\n")
 f5.close()
 
+##print(count_chunks)
+##print(total_time)
+##print(count_chunks_fillers)
+##print(total_time_fillers)
 
 #### Copy items from google list to list_de and list_nl; control spacing etc. accordingly; also fillers and prac
